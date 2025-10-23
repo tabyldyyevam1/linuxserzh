@@ -1,0 +1,118 @@
+    1  # Create groups
+    2  sudo groupadd admin
+    3  sudo groupadd auditor
+    4  sudo groupadd automation
+    5  sudo groupadd postgres
+    6  sudo groupadd minio
+    7  sudo groupadd nginx
+    8  sudo groupadd worker
+    9  # Create users
+   10  sudo useradd -m -s /bin/bash madina_admin -G admin
+   11  sudo useradd -m -s /bin/bash auditor_user -G auditor
+   12  sudo useradd -m -s /bin/bash ci_cd_bot -G automation
+   13  sudo useradd -m -s /bin/bash postgres -G postgres
+   14  sudo useradd -m -s /bin/bash minio -G minio
+   15  sudo useradd -m -s /bin/bash nginx -G nginx
+   16  sudo useradd -m -s /bin/bash worker -G worker
+   17  run cat/etc/group 
+   18  cat /etc/group
+   19  # Give admin sudo rights
+   20  echo "madina_admin ALL=(ALL:ALL) ALL" | sudo tee /etc/sudoers.d/madina_admin
+   21  # Docker rights for automation bot
+   22  sudo usermod -aG docker ci_cd_bot
+   23  echo "ci_cd_bot ALL=(ALL) NOPASSWD: /usr/bin/docker" | sudo tee /etc/sudoers.d/ci_cd_bot
+   24  # Assign file ownership to services
+   25  sudo mkdir -p /data/minio /var/lib/postgresql /etc/nginx /srv/worker
+   26  sudo chown -R postgres:postgres /var/lib/postgresql
+   27  sudo chown -R minio:minio /data/minio
+   28  sudo chown -R nginx:nginx /etc/nginx
+   29  sudo chown -R worker:worker /srv/worker
+   30  sudo useradd -m -s /bin/bash postgres -g postgres
+   31  sudo useradd -m -s /bin/bash minio -g minio
+   32  sudo useradd -m -s /bin/bash nginx -g nginx
+   33  sudo useradd -m -s /bin/bash worker -g worker
+   34  echo "madina_admin ALL=(ALL:ALL) ALL" | sudo tee /etc/sudoers.d/madina_admin
+   35  sudo usermod -aG docker ci_cd_bot
+   36  echo "ci_cd_bot ALL=(ALL) NOPASSWD: /usr/bin/docker" | sudo tee /etc/sudoers.d/ci_cd_bot
+   37  sudo mkdir -p /data/minio /var/lib/postgresql /etc/nginx /srv/worker
+   38  sudo chown -R postgres:postgres /var/lib/postgresql
+   39  sudo chown -R minio:minio /data/minio
+   40  sudo chown -R nginx:nginx /etc/nginx
+   41  sudo chown -R worker:worker /srv/worker 
+   42  ls -l /data/
+   43  sudo cat /etc/sudoers.d/ci_cd_bot
+   44  ssh-keygen -t rsa -b 4096 -C "automation_bot@project"
+   45  sudo mkdir -p /home/automation_bot/.ssh
+   46  sudo cp ~/.ssh/id_rsa.pub /home/automation_bot/.ssh/authorized_keys
+   47  sudo chown -R automation_bot:automation /home/automation_bot/.ssh
+   48  sudo chmod 700 /home/automation_bot/.ssh
+   49  sudo chmod 600 /home/automation_bot/.ssh/authorized_keys 
+   50  sudo useradd -m -s /bin/bash automation_bot -g automation
+   51  id automation_boid automation_bot
+   52  id automation_bot
+   53  uid=1013(automation_bot) gid=1006(automation) groups=1006(automation)
+   54  sudo chown -R automation_bot:automation /home/automation_bot/.ssh
+   55  sudo chmod 700 /home/automation_bot/.ssh
+   56  sudo chmod 600 /home/automation_bot/.ssh/authorized_keys 
+   57  ls -la /home/automation_bot/.ssh
+   58  sudo ls -la /home/automation_bot/.ssh
+   59  ssh automation_bot@localhost
+   60  history
+   61  history > ~/all_commands.txt
+   62  cat ~/all_commands.txt
+   63  getent group sudo
+   64  # Create groups
+   65  sudo groupadd admin
+   66  sudo groupadd auditor
+   67  sudo groupadd automation
+   68  sudo groupadd postgres
+   69  sudo groupadd minio
+   70  sudo groupadd nginx
+   71  sudo groupadd worker
+   72  # Create users
+   73  sudo useradd -m -s /bin/bash madina_admin -G admin
+   74  sudo useradd -m -s /bin/bash auditor_user -G auditor
+   75  sudo useradd -m -s /bin/bash ci_cd_bot -G automation
+   76  sudo useradd -m -s /bin/bash postgres -G postgres
+   77  sudo useradd -m -s /bin/bash minio -G minio
+   78  sudo useradd -m -s /bin/bash nginx -G nginx
+   79  sudo useradd -m -s /bin/bash worker -G worker
+   80  cut -d: -f1 /etc/passwd
+   81  cut -d: -f1 /etc/group
+   82  history > ~/commands_history.txt
+   83  cat ~/commands_history.txt
+   84  cat /etc/group
+   85  id madina_admin
+   86  id auditor_user
+   87  id ci_cd_bot
+   88  sudo cat /etc/sudoers.d/*
+   89  ls -l /var/lib | grep postgresql
+   90  ls -l /data | grep minio
+   91  ls -l /etc | grep nginx
+   92  ls -l /srv | grep worker
+   93  cat ~/.ssh/id_rsa.pub
+   94  sudo ls -la /home/automation_bot/.ssh
+   95  ssh automation_bot@localhost
+   96  history > ~/commands_history.txt
+   97  cat ~/commands_history.txt
+   98  sudo apt update && sudo apt upgrade -y
+   99  sudo apt install -y python3 python3-pip docker.io docker-compose nginx postgresql postgresql-client redis-server git ufw
+  100  pip install fastapi uvicorn psycopg2-binary boto3 requests pydantic
+  101  pip install fastapi uvicorn psycopg2-binary boto3 requests pydantic --break-system-packages
+  102  sudo ufw allow OpenSSH
+  103  sudo ufw allow 80/tcp
+  104  sudo ufw allow 443/tcp
+  105  sudo ufw enable
+  106  sudo ufw status
+  107  nano test_environment.py
+  108  python3 test_environment.py
+  109  pip install redis --break-system-packages
+  110  pip list | grep redis
+  111  python3 test_environment.py
+  112  git config --global user.name "tabyldyyevam1"
+  113  git config --global user.email "madina.tayldy@icloud.com"
+  114  cd ~
+  115  mkdir LinuxRepo
+  116  cd LinuxRepo
+  117  cp ~/test_environment.py .
+  118  history > commands_history.txt
