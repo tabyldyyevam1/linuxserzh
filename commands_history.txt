@@ -116,3 +116,18 @@
   116  cd LinuxRepo
   117  cp ~/test_environment.py .
   118  history > commands_history.txt
+  119  ls
+  120  cd ~/LinuxRepo
+  121  git remote remove origin 2>/dev/null
+  122  git remote add origin https://github.com/tabyldyyevam1/Linux.git
+  123  git push -u origin main
+  124  cd ~/LinuxRepo
+  125  git init
+  126  git remote add origin https://github.com/tabyldyyevam1/Linux.git
+  127  git add .
+  128  git commit -m "Initial commit"
+  129  git branch -M main
+  130  git push -u origin main --force
+  131  history
+  132  cd ~/LinuxRepo
+  133  history > commands_history.txt
